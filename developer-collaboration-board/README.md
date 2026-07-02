@@ -1,17 +1,23 @@
 # Developer Collaboration Board
 
-A full-stack collaboration board for managing software team tasks with authentication, role-based access, real user assignment, comments, and a Kanban workflow.
+A full-stack MERN collaboration platform for managing software team tasks. The app supports authentication, admin/member roles, real user task assignment, Kanban tracking, status updates, comments, and MongoDB persistence.
+
+## Live Links
+
+- Live App: https://developer-collaboration-board.vercel.app
+- Backend API: https://developer-collaboration-board.onrender.com
+- GitHub Repository: https://github.com/ignite72/Developer-Collaboration-Board
 
 ## Features
 
-- Public landing page with login and signup entry points
-- JWT authentication with MongoDB-backed users
+- User signup and login with JWT authentication
 - Admin and member roles
 - Admin-only task creation, editing, deletion, and assignment
-- Real user assignment using registered accounts
+- Real task assignment to registered users
 - Members see only tasks assigned to them
-- Task status workflow: Todo, In Progress, Review, Done
-- Kanban board with focused status tabs
+- Kanban workflow with Todo, In Progress, Review, and Done statuses
+- Focused status tabs for viewing specific task stages
+- Task status updates
 - Task comments with author and timestamp
 - Protected backend routes with role and assignment checks
 - MongoDB persistence for users, tasks, and comments
@@ -22,7 +28,7 @@ A full-stack collaboration board for managing software team tasks with authentic
 - Backend: Node.js, Express.js
 - Database: MongoDB Atlas, Mongoose
 - Authentication: JWT, bcryptjs
-- Deployment-ready config: Vite environment variables and Express CORS
+- Deployment: Vercel frontend, Render backend
 
 ## Project Structure
 
@@ -47,13 +53,12 @@ developer-collaboration-board/
 
 ## Local Setup
 
-Clone the repository and install dependencies separately for backend and frontend.
-
 ### Backend
 
 ```bash
-cd backend
+cd developer-collaboration-board/backend
 npm install
+npm run dev
 ```
 
 Create `backend/.env`:
@@ -66,29 +71,18 @@ ADMIN_EMAILS=admin@example.com
 CLIENT_URL=http://localhost:5173
 ```
 
-Run backend:
-
-```bash
-npm run dev
-```
-
 ### Frontend
 
 ```bash
-cd frontend
+cd developer-collaboration-board/frontend
 npm install
+npm run dev
 ```
 
 Create `frontend/.env`:
 
 ```env
 VITE_API_URL=http://localhost:5000
-```
-
-Run frontend:
-
-```bash
-npm run dev
 ```
 
 ## API Overview
@@ -111,29 +105,6 @@ Users:
 
 - `GET /api/users`
 
-## Deployment Notes
+## Resume Summary
 
-Frontend deployment, for example Vercel:
-
-- Root directory: `frontend`
-- Build command: `npm run build`
-- Output directory: `dist`
-- Environment variable: `VITE_API_URL=https://your-backend-url`
-
-Backend deployment, for example Render or Railway:
-
-- Root directory: `backend`
-- Start command: `npm start`
-- Environment variables:
-  - `PORT`
-  - `MONGODB_URI`
-  - `JWT_SECRET`
-  - `ADMIN_EMAILS`
-  - `CLIENT_URL=https://your-frontend-url`
-
-## Resume Bullets
-
-- Built a full-stack developer collaboration board using React, Node.js, Express.js, MongoDB, and JWT authentication.
-- Implemented role-based access control with admin/member permissions, protected routes, and assignment-based task visibility.
-- Developed MongoDB-backed task management with Kanban workflow, comments, status updates, and admin edit/delete operations.
-- Configured deployment-ready environment variables, CORS handling, and GitHub-safe project documentation.
+Built and deployed a full-stack collaboration board using React, Node.js, Express.js, MongoDB, and JWT. Implemented role-based access control, real user task assignment, protected APIs, Kanban status tracking, task comments, and deployment-ready environment configuration with Vercel and Render.
