@@ -12,6 +12,8 @@ const emptyTask = {
   notes: ""
 };
 
+const API_BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 function BoardPage({ onLogout }) {
   const [tasks, setTasks] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -31,7 +33,7 @@ function BoardPage({ onLogout }) {
     async function fetchTasks() {
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:5000/api/tasks", {
+        const response = await fetch(`${API_BASE_URL}/api/tasks`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -62,7 +64,7 @@ function BoardPage({ onLogout }) {
 
       try {
         const token = localStorage.getItem("token");
-        const response = await fetch("http://localhost:5000/api/users", {
+        const response = await fetch(`${API_BASE_URL}/api/users`, {
           headers: {
             Authorization: `Bearer ${token}`
           }
@@ -150,7 +152,7 @@ function BoardPage({ onLogout }) {
 
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch("http://localhost:5000/api/tasks", {
+      const response = await fetch(`${API_BASE_URL}/api/tasks`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -175,7 +177,7 @@ function BoardPage({ onLogout }) {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/tasks/${taskId}/status`,
+        `${API_BASE_URL}/api/tasks/${taskId}/status`,
         {
           method: "PATCH",
           headers: {
@@ -224,7 +226,7 @@ function BoardPage({ onLogout }) {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/tasks/${editingTaskId}`,
+        `${API_BASE_URL}/api/tasks/${editingTaskId}`,
         {
           method: "PUT",
           headers: {
@@ -253,7 +255,7 @@ function BoardPage({ onLogout }) {
   async function handleDeleteTask(taskId) {
     try {
       const token = localStorage.getItem("token");
-      const response = await fetch(`http://localhost:5000/api/tasks/${taskId}`, {
+      const response = await fetch(`${API_BASE_URL}/api/tasks/${taskId}`, {
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`
@@ -283,7 +285,7 @@ function BoardPage({ onLogout }) {
     try {
       const token = localStorage.getItem("token");
       const response = await fetch(
-        `http://localhost:5000/api/tasks/${taskId}/comments`,
+        `${API_BASE_URL}/api/tasks/${taskId}/comments`,
         {
           method: "POST",
           headers: {

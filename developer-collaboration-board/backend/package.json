@@ -1,5 +1,5 @@
 {
-  "name": "job-tracker-backend",
+  "name": "developer-collaboration-board-backend",
   "version": "0.1.0",
   "type": "module",
   "main": "src/server.js",
